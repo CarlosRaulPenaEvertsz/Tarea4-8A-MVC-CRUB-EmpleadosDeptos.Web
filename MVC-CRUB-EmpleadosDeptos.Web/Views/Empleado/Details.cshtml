@@ -1,0 +1,65 @@
+﻿@model MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_EMPLEADO
+
+@{
+    ViewBag.Title = "Detailles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Tabla: TBL_EMPLEADO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sueldo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sueldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_DEPARTAMENTO.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_DEPARTAMENTO.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="/Empleado/Edit?id=@Model.Codigo" id="@Model.Codigo" style="margin-bottom:10px" class="btn btn-success">
+        Modificar Datos
+    </a>
+    @*@Html.ActionLink(" Modificar Datos ", "Edit", new { id = Model.Codigo }) |*@
+
+    <a class="btn btn-success" style="margin-bottom:10px" href="/Empleado/Index">
+        Volver al Listado
+    </a>
+    @*@Html.ActionLink(" Volver al Listado ", "Index")*@
+</p>

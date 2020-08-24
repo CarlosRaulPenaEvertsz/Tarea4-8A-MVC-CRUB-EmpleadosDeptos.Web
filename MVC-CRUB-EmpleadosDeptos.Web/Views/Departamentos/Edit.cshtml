@@ -1,0 +1,48 @@
+﻿@model MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_DEPARTAMENTO
+
+@{
+                /**/
+
+                ViewBag.Title = "Modificar Departamento";
+}
+
+<h2>Modificar Departamento</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Tabla: TBL_DEPARTAMENTO</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Codigo)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=" Registrar Cambios " class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="btn btn-success" style="margin-bottom:10px" href="/Departamentos/Index">
+        Retornar Sin Registrar
+    </a>
+
+    @*@Html.ActionLink("Retornar Sin Registrar", "Index")*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

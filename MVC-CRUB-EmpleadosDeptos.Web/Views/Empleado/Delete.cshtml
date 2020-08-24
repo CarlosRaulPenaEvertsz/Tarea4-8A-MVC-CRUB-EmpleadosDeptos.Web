@@ -1,0 +1,68 @@
+﻿@model MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_EMPLEADO
+
+@{
+    ViewBag.Title = "Borrar Empleado";
+}
+
+<h2>Borrar Empleado</h2>
+
+<h3>Está Seguro Desea Borrar Este Empleado?</h3>
+<div>
+    <h4>Tabla: TBL_EMPLEADO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sueldo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sueldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBL_DEPARTAMENTO.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBL_DEPARTAMENTO.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=" Borrar " style="margin-bottom:10px" class="btn btn-danger" /> 
+            @*@Html.ActionLink("No Borrar y Volver al Listado", "Index")*@
+            <a class="btn btn-success" style="margin-bottom:10px" href="/Empleado/Index">
+                No Borrar y Volver al Listado
+            </a>
+
+        </div>
+    }
+</div>

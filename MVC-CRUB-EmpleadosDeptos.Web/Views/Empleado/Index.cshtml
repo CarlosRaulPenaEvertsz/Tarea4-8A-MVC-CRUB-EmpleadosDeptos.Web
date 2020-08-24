@@ -1,0 +1,99 @@
+﻿@model IEnumerable<MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_EMPLEADO>
+
+@{
+    ViewBag.Title = "Lista de Empleados";
+}
+<div class="container mt-3">
+    <h2>Lista de Empleados</h2>
+
+    @*Search o Filter*@
+    <div class="row">
+
+        <div class="col-sm-2">
+            <a class="btn btn-success" style="margin-bottom:10px" href="/Empleados/Create">
+                Ingresar Nuevo Empleado
+            </a>
+        </div>
+        <div class="col-sm-10">
+            <input class="form-control" id="input_search" name="search" type="text" placeholder="Búsqueda..." />
+        </div>
+    </div>
+    @*Grid o Table*@
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cedula)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cargo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sueldo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TBL_DEPARTAMENTO.Nombre)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cedula)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cargo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sueldo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TBL_DEPARTAMENTO.Nombre)
+                        </td>
+                        <td>
+                            @Html.Raw("<a data-modal='' href='/Empleado/Edit/" + item.Codigo + "' id='" + item.Codigo + "' title='Modificar'> <span class='glyphicon glyphicon-edit'> </span> <a/>")
+                            @*@Html.ActionLink("Modificar", "Edit", new { id = item.Codigo })*@
+
+                            @Html.Raw("<a data-modal='' href='/Empleado/Details/" + item.Codigo + "' id='" + item.Codigo + "' title='Detalles'> <span class='glyphicon glyphicon-th-list'> </span> <a/>")
+                            @*<a href="/Empleado/Details?Codigo=@item.Codigo" class="btn btn-success">Detalles</a>*@
+                            @*@Html.ActionLink("Detalles", "Details", new { id = item.Codigo }) |*@
+
+                            @Html.Raw("<a data-modal='' href='/Empleado/Delete/" + item.Codigo + "' id='" + item.Codigo + "' title='Eliminar'> <span class='glyphicon glyphicon-trash'> </span> <a/>")
+                            @*<a href="/Empleado/Delete?Codigo=@item.Codigo" class="btn btn-success">Eliminar</a>*@
+                            @*@Html.ActionLink("Eliminar", "Delete", new { id = item.Codigo })*@
+                        </td>
+                    </tr>
+                 }
+            </tbody>
+        </table>
+    </div>
+
+    @*<a href="/Home/Index">Retornar</a>*@
+    <a class="btn btn-success" style="margin-bottom:10px" href="/Home/Index">Retornar</a>
+
+    @*realiza la busqueda, en la tabla tbody*@
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $("#input_search").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#table_body tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+    }
+
+</div>
+

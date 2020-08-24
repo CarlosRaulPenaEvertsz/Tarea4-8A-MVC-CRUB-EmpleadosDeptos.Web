@@ -1,0 +1,32 @@
+﻿@model MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_DEPARTAMENTO
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Tabla: TBL_DEPARTAMENTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="/Departamentos/Edit?id=@Model.Codigo" id="@Model.Codigo" style="margin-bottom:10px" class="btn btn-success">
+    Modificar Datos</a>
+    @*@Html.ActionLink(" Modificar Datos ", "Edit",  new { id = Model.Codigo },  "style='margin-bottom:10px' class='btn btn-danger'")*@
+
+    <a class="btn btn-success" style="margin-bottom:10px" href="/Departamentos/Index" >
+        Volver al Listado
+    </a>
+    @*@Html.ActionLink(" Volver al Listado ", "Index")*@
+</p>

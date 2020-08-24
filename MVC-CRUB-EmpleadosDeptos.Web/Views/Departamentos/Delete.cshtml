@@ -1,0 +1,37 @@
+﻿@model MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_DEPARTAMENTO
+
+@{
+    ViewBag.Title = "Borrar Departamento";
+}
+
+<h2>Borrar Departamento</h2>
+
+<h3>Está Seguro Desea Borrar Este Departamento??</h3>
+<div>
+    <h4>Tabla: TBL_DEPARTAMENTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value=" Borrar " style="margin-bottom:10px" class="btn btn-danger" /> 
+        @*@Html.ActionLink("No Borrar y Volver al Listado", "Index")*@
+        <a class="btn btn-success" style="margin-bottom:10px" href="/Departamentos/Index">
+            No Borrar y Volver al Listado
+        </a>
+
+    </div>
+    }
+</div>
